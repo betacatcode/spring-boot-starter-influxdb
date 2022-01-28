@@ -1,4 +1,4 @@
-package com.github.shawn.influx.ano;
+package com.github.betacatcode.influx.ano;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.github.shawn.influx.config;
+package com.github.betacatcode.influx.config;
 
 
 import org.influxdb.InfluxDB;

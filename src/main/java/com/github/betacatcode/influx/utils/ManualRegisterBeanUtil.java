@@ -1,4 +1,4 @@
-package com.github.shawn.influx.utils;
+package com.github.betacatcode.influx.utils;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

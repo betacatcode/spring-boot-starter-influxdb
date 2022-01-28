@@ -1,8 +1,8 @@
-package com.github.shawn.influx;
+package com.github.betacatcode.influx;
 
-import com.github.shawn.influx.core.Executor;
-import com.github.shawn.influx.core.ParameterHandler;
-import com.github.shawn.influx.core.ResultSetHandler;
+import com.github.betacatcode.influx.core.Executor;
+import com.github.betacatcode.influx.core.ParameterHandler;
+import com.github.betacatcode.influx.core.ResultSetHandler;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,11 +1,11 @@
-package com.github.shawn.influx;
+package com.github.betacatcode.influx;
 
-import com.github.shawn.influx.ano.Delete;
-import com.github.shawn.influx.ano.Insert;
-import com.github.shawn.influx.ano.Select;
-import com.github.shawn.influx.core.Executor;
-import com.github.shawn.influx.core.ParameterHandler;
-import com.github.shawn.influx.core.ResultSetHandler;
+import com.github.betacatcode.influx.ano.Delete;
+import com.github.betacatcode.influx.ano.Insert;
+import com.github.betacatcode.influx.ano.Select;
+import com.github.betacatcode.influx.core.Executor;
+import com.github.betacatcode.influx.core.ParameterHandler;
+import com.github.betacatcode.influx.core.ResultSetHandler;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;

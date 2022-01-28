@@ -3,4 +3,4 @@ spring:
     url: http://127.0.0.1:8086
     password: 123456
     user: admin
-    mapper-location: com.github.shawn
+    mapper-location: com.github.betacatcode

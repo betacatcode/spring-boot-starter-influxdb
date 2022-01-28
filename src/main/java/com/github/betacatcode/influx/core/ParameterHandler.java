@@ -1,4 +1,4 @@
-package com.github.shawn.influx.core;
+package com.github.betacatcode.influx.core;
 
 import java.lang.reflect.Parameter;
 

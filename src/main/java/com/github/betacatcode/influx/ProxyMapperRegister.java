@@ -1,7 +1,6 @@
-package com.github.shawn.influx;
+package com.github.betacatcode.influx;
 
-import com.github.shawn.influx.utils.ManualRegisterBeanUtil;
-import lombok.extern.slf4j.Slf4j;
+import com.github.betacatcode.influx.utils.ManualRegisterBeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
@@ -21,7 +20,6 @@ import org.springframework.util.SystemPropertyUtils;
 import java.io.IOException;
 import java.util.HashSet;
 
-@Slf4j
 @Component
 public class ProxyMapperRegister implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -34,7 +32,6 @@ public class ProxyMapperRegister implements ApplicationListener<ContextRefreshed
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        log.info("注册InfluxDBMapper...");
         //获取mapper包下所有的Mapper
         HashSet<Class<?>> classes = new HashSet<>();
         String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX
