@@ -6,8 +6,6 @@ import org.influxdb.dto.BatchPoints;
 import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
 import org.influxdb.impl.InfluxDBMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +13,19 @@ import java.util.List;
 /**
  * 执行器
  */
-@Component
 public class Executor {
-    @Autowired
     InfluxDB influxDB;
-    @Autowired
     InfluxDBMapper influxDBMapper;
 
-    public <E> List<E> select(String sql,Class domainClass){
+    public Executor() {
+    }
+
+    public Executor(InfluxDB influxDB, InfluxDBMapper influxDBMapper) {
+        this.influxDB = influxDB;
+        this.influxDBMapper = influxDBMapper;
+    }
+
+    public <E> List<E> select(String sql, Class domainClass){
         List<E> results = influxDBMapper.query(new Query(sql), domainClass);
         return results;
     }

@@ -17,21 +17,24 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.SystemPropertyUtils;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.HashSet;
 
-@Component
-public class ProxyMapperRegister implements ApplicationListener<ContextRefreshedEvent> {
+public class ProxyMapperRegister{
 
-    @Value("${spring.influx.mapper-location}")
     private String mapperLocation;
-    @Autowired
     ConfigurableApplicationContext applicationContext;
-    @Autowired
     ResourceLoader resourceLoader;
 
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+    public ProxyMapperRegister(String mapperLocation, ConfigurableApplicationContext applicationContext, ResourceLoader resourceLoader) {
+        this.mapperLocation = mapperLocation;
+        this.applicationContext = applicationContext;
+        this.resourceLoader = resourceLoader;
+    }
+
+    @PostConstruct
+    public void afterInit() {
         //获取mapper包下所有的Mapper
         HashSet<Class<?>> classes = new HashSet<>();
         String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX

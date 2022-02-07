@@ -9,7 +9,7 @@
 	<!--	<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
 	<!--</parent>-->
 	<groupId>com.github.betacatcode</groupId>
-	<artifactId>influxdb-annotation</artifactId>
+	<artifactId>spring-boot-starter-influxdb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>influxdb-annotation</name>
 	<description>Demo project for Spring Boot</description>
