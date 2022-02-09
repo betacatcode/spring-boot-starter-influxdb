@@ -11,8 +11,8 @@ public class ParameterHandler {
      * 拼接sql
      * @param parameters 参数名
      * @param args 参数实际值
-     * @param sql
-     * @return
+     * @param sql 未拼接参数的sql语句
+     * @return 拼接好的sql
      */
     public String handleParameter(Parameter[] parameters,Object[] args,String sql){
         for(int i=0;i<parameters.length;i++){
