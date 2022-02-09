@@ -16,7 +16,7 @@
    </dependency>
    ~~~
 
-2、配置yml文件
+2. 配置yml文件
 
 ~~~yaml
 spring:
@@ -29,7 +29,7 @@ spring:
 
 **其中 mapper-location 是InfluxDB Mapper存放路径** 
 
-3、创建表对应实体类（此处使用lombok依赖，也可不使用）
+3. 创建表对应实体类（此处使用lombok依赖，也可不使用）
 
 ~~~java
 import lombok.Data;
@@ -56,7 +56,7 @@ public class Student {
 }
 ~~~
 
-4、创建实体类对应Mapper，需继承InfluxDBBaseMapper这个接口
+4. 创建实体类对应Mapper，需继承InfluxDBBaseMapper这个接口
 
 ~~~java
 import com.github.shawn.influx.InfluxDBBaseMapper;
@@ -83,7 +83,7 @@ public interface StudentMapper extends InfluxDBBaseMapper {
 }
 ~~~
 
-5、建立测试类测试
+5. 建立测试类测试
 
 ~~~java
 @RunWith(SpringRunner.class)
