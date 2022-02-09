@@ -2,7 +2,7 @@
 
 ## 简介
 
-这是一个InfluxDB的框架，使用方式类似于Mybatis，对influxDB官方工具进行了简易封装，支持使用注解的方式对InfluxDB进行增、删、改操作。
+这是一个InfluxDB的框架，使用方式类似于Mybatis，对influxDB官方工具进行了简易封装，支持使用注解的方式对InfluxDB进行增、删、改操作，需配合Spring Boot使用。
 
 ## 使用方法
 
@@ -10,10 +10,10 @@
 
    ~~~xml
    <dependency>
-               <groupId>io.github.betacatcode</groupId>
-               <artifactId>spring-boot-starter-influxdb</artifactId>
-               <version>0.0.1-RELEASE</version>
-           </dependency>
+       <groupId>io.github.betacatcode</groupId>
+       <artifactId>spring-boot-starter-influxdb</artifactId>
+       <version>0.0.1-RELEASE</version>
+   </dependency>
    ~~~
 
 2、配置yml文件
