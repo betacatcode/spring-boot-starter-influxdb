@@ -12,7 +12,7 @@
    <dependency>
        <groupId>io.github.betacatcode</groupId>
        <artifactId>spring-boot-starter-influxdb</artifactId>
-       <version>0.0.1-RELEASE</version>
+       <version>0.0.2-RELEASE</version>
    </dependency>
    ~~~
 
@@ -29,7 +29,15 @@ spring:
 
 **其中 mapper-location 是InfluxDB Mapper存放路径** 
 
-3. 创建表对应实体类（此处使用lombok依赖，也可不使用）
+3. 建立代理mapper的配置类，否则可能会出现注入优先级引起的问题
+~~~
+@DependsOn("proxyMapperRegister")
+@Configuration
+public class ProxyMapperConfig {
+}
+~~~
+
+4. 创建表对应实体类（此处使用lombok依赖，也可不使用）
 
 ~~~java
 import lombok.Data;
@@ -56,16 +64,9 @@ public class Student {
 }
 ~~~
 
-4. 创建实体类对应Mapper，需继承InfluxDBBaseMapper这个接口
+5. 创建实体类对应Mapper，需继承InfluxDBBaseMapper这个接口
 
 ~~~java
-import com.github.shawn.influx.InfluxDBBaseMapper;
-import com.github.shawn.influx.ano.Delete;
-import com.github.shawn.influx.ano.Insert;
-import com.github.shawn.influx.ano.Select;
-
-import java.util.List;
-
 public interface StudentMapper extends InfluxDBBaseMapper {
 
     @Select(value = "select * from test.autogen.student where sname=#{sname}",resultType = Student.class)
@@ -83,7 +84,7 @@ public interface StudentMapper extends InfluxDBBaseMapper {
 }
 ~~~
 
-5. 建立测试类测试
+6. 建立测试类测试
 
 ~~~java
 @RunWith(SpringRunner.class)
