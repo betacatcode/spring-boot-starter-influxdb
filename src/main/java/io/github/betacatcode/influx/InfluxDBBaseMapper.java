@@ -1,4 +1,4 @@
-package com.github.betacatcode.influx;
+package io.github.betacatcode.influx;
 
 public interface InfluxDBBaseMapper {
 }

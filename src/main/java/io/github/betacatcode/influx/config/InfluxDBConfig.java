@@ -1,8 +1,8 @@
-package com.github.betacatcode.influx.config;
+package io.github.betacatcode.influx.config;
 
 
-import com.github.betacatcode.influx.ProxyMapperRegister;
-import com.github.betacatcode.influx.core.Executor;
+import io.github.betacatcode.influx.ProxyMapperRegister;
+import io.github.betacatcode.influx.core.Executor;
 import org.influxdb.InfluxDB;
 import org.influxdb.impl.InfluxDBMapper;
 import org.springframework.beans.factory.annotation.Value;

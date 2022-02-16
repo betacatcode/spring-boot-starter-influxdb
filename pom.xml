@@ -10,9 +10,9 @@
 	<!--</parent>-->
 	<groupId>io.github.betacatcode</groupId>
 	<artifactId>spring-boot-starter-influxdb</artifactId>
-	<version>0.0.1-RELEASE</version>
-	<name>influxdb-annotation</name>
-	<description>Demo project for Spring Boot</description>
+	<version>0.0.2-RELEASE</version>
+	<name>spring-boot-starter-influxdb</name>
+	<description>Spring boot starter for influxdb</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

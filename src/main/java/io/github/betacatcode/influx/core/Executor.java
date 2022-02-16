@@ -1,4 +1,4 @@
-package com.github.betacatcode.influx.core;
+package io.github.betacatcode.influx.core;
 
 import org.influxdb.InfluxDB;
 import org.influxdb.annotation.Measurement;

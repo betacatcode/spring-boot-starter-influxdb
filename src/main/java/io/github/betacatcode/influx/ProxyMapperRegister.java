@@ -1,11 +1,8 @@
-package com.github.betacatcode.influx;
+package io.github.betacatcode.influx;
 
-import com.github.betacatcode.influx.utils.ManualRegisterBeanUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationListener;
+import io.github.betacatcode.influx.utils.ManualRegisterBeanUtil;
+import io.github.betacatcode.influx.utils.StrUtil;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -13,7 +10,6 @@ import org.springframework.core.io.support.ResourcePatternUtils;
 import org.springframework.core.type.classreading.CachingMetadataReaderFactory;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.SystemPropertyUtils;
 
@@ -68,7 +64,7 @@ public class ProxyMapperRegister{
 
         for (Class<?> aClass : classes) {
             //注册接口类至工厂Bean，再用动态代理生成对应Mapper
-            ManualRegisterBeanUtil.registerBean(applicationContext, aClass.getSimpleName(),InfluxProxyMapperFactory.class,aClass);
+            ManualRegisterBeanUtil.registerBean(applicationContext, StrUtil.captureName(aClass.getSimpleName()),InfluxProxyMapperFactory.class,aClass);
         }
     }
 }
