@@ -47,7 +47,7 @@ public class ProxyMapperRegister{
                     String className = metadataReader.getClassMetadata().getClassName();
                     Class<?> aClass = Class.forName(className);
 
-                    //当这个Mapper实现InfluxBaseMapper时加入集和
+                    //当这个Mapper实现InfluxBaseMapper时加集合
                     Class<?>[] interfaces = aClass.getInterfaces();
                     for (Class<?> anInterface : interfaces) {
                         if(anInterface== InfluxDBBaseMapper.class){

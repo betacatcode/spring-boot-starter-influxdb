@@ -10,7 +10,7 @@
 	<!--</parent>-->
 	<groupId>io.github.betacatcode</groupId>
 	<artifactId>spring-boot-starter-influxdb</artifactId>
-	<version>0.0.2-RELEASE</version>
+	<version>0.0.3-RELEASE</version>
 	<name>spring-boot-starter-influxdb</name>
 	<description>Spring boot starter for influxdb</description>
 	<properties>
