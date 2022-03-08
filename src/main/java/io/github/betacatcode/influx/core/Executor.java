@@ -49,13 +49,16 @@ public class Executor {
                             .build();
                     pointList.add(point);
                 }
-                BatchPoints batchPoints = BatchPoints.builder().points(pointList).build();
+
                 //获取数据库名和rp
                 Measurement measurement = firstObj.getClass().getAnnotation(Measurement.class);
                 String database = measurement.database();
                 String retentionPolicy = measurement.retentionPolicy();
+                BatchPoints batchPoints = BatchPoints
+                                                    .builder()
+                                                    .points(pointList)
+                                                    .retentionPolicy(retentionPolicy).build();
                 influxDB.setDatabase(database);
-                influxDB.setRetentionPolicy(retentionPolicy);
                 influxDB.write(batchPoints);
             }
 
