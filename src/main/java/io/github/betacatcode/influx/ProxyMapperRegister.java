@@ -17,7 +17,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.HashSet;
 
-public class ProxyMapperRegister{
+public class ProxyMapperRegister {
 
     private String mapperLocation;
     ConfigurableApplicationContext applicationContext;
@@ -42,7 +42,7 @@ public class ProxyMapperRegister{
         try {
             Resource[] resources = resolver.getResources(packageSearchPath);
             for (Resource resource : resources) {
-                if(resource.isReadable()){
+                if (resource.isReadable()) {
                     metadataReader = metadataReaderFactory.getMetadataReader(resource);
                     String className = metadataReader.getClassMetadata().getClassName();
                     Class<?> aClass = Class.forName(className);
@@ -50,7 +50,7 @@ public class ProxyMapperRegister{
                     //当这个Mapper实现InfluxBaseMapper时加集合
                     Class<?>[] interfaces = aClass.getInterfaces();
                     for (Class<?> anInterface : interfaces) {
-                        if(anInterface== InfluxDBBaseMapper.class){
+                        if (anInterface == InfluxDBBaseMapper.class) {
                             classes.add(aClass);
                         }
                     }
@@ -64,7 +64,7 @@ public class ProxyMapperRegister{
 
         for (Class<?> aClass : classes) {
             //注册接口类至工厂Bean，再用动态代理生成对应Mapper
-            ManualRegisterBeanUtil.registerBean(applicationContext, StrUtil.captureName(aClass.getSimpleName()),InfluxProxyMapperFactory.class,aClass);
+            ManualRegisterBeanUtil.registerBean(applicationContext, StrUtil.captureName(aClass.getSimpleName()), InfluxProxyMapperFactory.class, aClass);
         }
     }
 }

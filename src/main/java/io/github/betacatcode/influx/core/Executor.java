@@ -25,20 +25,20 @@ public class Executor {
         this.influxDBMapper = influxDBMapper;
     }
 
-    public <E> List<E> select(String sql, Class domainClass){
+    public <E> List<E> select(String sql, Class domainClass) {
         List<E> results = influxDBMapper.query(new Query(sql), domainClass);
         return results;
     }
 
-    public void insert(Object args[]){
-        if(args.length!=1){
+    public void insert(Object args[]) {
+        if (args.length != 1) {
             throw new RuntimeException();
         }
         Object obj = args[0];
         //插入的是集合类型的
-        if(obj instanceof List){
-            List list = (ArrayList)obj;
-            if(list.size()>0){
+        if (obj instanceof List) {
+            List list = (ArrayList) obj;
+            if (list.size() > 0) {
                 Object firstObj = list.get(0);
                 Class<?> domainClass = firstObj.getClass();
                 List<Point> pointList = new ArrayList<>();
@@ -55,21 +55,21 @@ public class Executor {
                 String database = measurement.database();
                 String retentionPolicy = measurement.retentionPolicy();
                 BatchPoints batchPoints = BatchPoints
-                                                    .builder()
-                                                    .points(pointList)
-                                                    .retentionPolicy(retentionPolicy).build();
+                        .builder()
+                        .points(pointList)
+                        .retentionPolicy(retentionPolicy).build();
                 influxDB.setDatabase(database);
                 influxDB.write(batchPoints);
             }
 
             //插入单个
-        }else {
+        } else {
             influxDBMapper.save(obj);
         }
     }
 
-    public void delete(String sql,String database){
-        influxDB.query(new Query(sql,database));
+    public void delete(String sql, String database) {
+        influxDB.query(new Query(sql, database));
     }
 
 }

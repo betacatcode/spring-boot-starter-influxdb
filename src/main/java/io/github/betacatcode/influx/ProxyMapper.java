@@ -19,7 +19,7 @@ public class ProxyMapper implements InvocationHandler {
     private Executor executor;
     private ResultSetHandler resultSetHandler;
 
-    public ProxyMapper(ParameterHandler parameterHandler,Executor executor,ResultSetHandler resultSetHandler) {
+    public ProxyMapper(ParameterHandler parameterHandler, Executor executor, ResultSetHandler resultSetHandler) {
         this.parameterHandler = parameterHandler;
         this.executor = executor;
         this.resultSetHandler = resultSetHandler;
@@ -28,38 +28,38 @@ public class ProxyMapper implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Annotation[] annotations = method.getAnnotations();
-        if(annotations.length==1){
+        if (annotations.length == 1) {
             Annotation annotation = annotations[0];
             Class<? extends Annotation> annotationType = annotation.annotationType();
             //是查询的
-            if(annotationType==Select.class){
+            if (annotationType == Select.class) {
                 Select selectAnnotation = method.getAnnotation(Select.class);
                 //拼接sql
                 String sql = selectAnnotation.value();
                 Parameter[] parameters = method.getParameters();
-                sql = parameterHandler.handleParameter(parameters,args,sql);
+                sql = parameterHandler.handleParameter(parameters, args, sql);
                 //查询结果
                 Class resultType = selectAnnotation.resultType();
                 List<Object> list = executor.select(sql, resultType);
                 //根据返回类型返回结果
                 Class<?> returnType = method.getReturnType();
-                return resultSetHandler.handleResultSet(list,returnType);
+                return resultSetHandler.handleResultSet(list, returnType);
             }
             //是插入的
-            if(annotationType== Insert.class){
+            if (annotationType == Insert.class) {
                 executor.insert(args);
             }
             //是删除的
-            if(annotationType== Delete.class){
+            if (annotationType == Delete.class) {
                 Delete deleteAnnotation = method.getAnnotation(Delete.class);
                 //拼接sql
                 String sql = deleteAnnotation.value();
                 Parameter[] parameters = method.getParameters();
 
                 String database = deleteAnnotation.database();
-                sql = parameterHandler.handleParameter(parameters,args,sql);
+                sql = parameterHandler.handleParameter(parameters, args, sql);
                 //执行sql
-                executor.delete(sql,database);
+                executor.delete(sql, database);
             }
         }
         return null;

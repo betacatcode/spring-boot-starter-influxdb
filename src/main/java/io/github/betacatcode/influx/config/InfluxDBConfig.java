@@ -18,19 +18,19 @@ public class InfluxDBConfig {
     private String mapperLocation;
 
     @Bean(name = "influxDBMapper")
-    public InfluxDBMapper influxDBMapper(InfluxDB influxDB){
+    public InfluxDBMapper influxDBMapper(InfluxDB influxDB) {
         influxDB.setLogLevel(InfluxDB.LogLevel.BASIC);
         return new InfluxDBMapper(influxDB);
     }
 
     @Bean(name = "executor")
-    public Executor executor(InfluxDB influxDB,InfluxDBMapper influxDBMapper){
-        return new Executor(influxDB,influxDBMapper);
+    public Executor executor(InfluxDB influxDB, InfluxDBMapper influxDBMapper) {
+        return new Executor(influxDB, influxDBMapper);
     }
 
     @Bean(name = "proxyMapperRegister")
-    public ProxyMapperRegister proxyMapperRegister(ConfigurableApplicationContext applicationContext, ResourceLoader resourceLoader){
-        return new ProxyMapperRegister(mapperLocation,applicationContext,resourceLoader);
+    public ProxyMapperRegister proxyMapperRegister(ConfigurableApplicationContext applicationContext, ResourceLoader resourceLoader) {
+        return new ProxyMapperRegister(mapperLocation, applicationContext, resourceLoader);
     }
 
 }

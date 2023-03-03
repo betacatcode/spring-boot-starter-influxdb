@@ -22,7 +22,7 @@ public class InfluxProxyMapperFactory<T> implements FactoryBean {
     @Override
     public Object getObject() throws Exception {
         Object proxyInstance = Proxy.newProxyInstance(
-                interfaceClass.getClassLoader(), new Class[]{interfaceClass}, new ProxyMapper(new ParameterHandler(),executor,new ResultSetHandler()));
+                interfaceClass.getClassLoader(), new Class[]{interfaceClass}, new ProxyMapper(new ParameterHandler(), executor, new ResultSetHandler()));
         return proxyInstance;
     }
 
